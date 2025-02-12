@@ -1,0 +1,114 @@
+fileVersion: 1
+id: 52d10f4f-0b20-43d9-8098-7f08e6a8788f
+name: RAW_NATION_REGION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: RAW_STORAGE
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6032f663-f17f-45cb-92dd-0c24a4f13bf2
+          stepCounter: 52d10f4f-0b20-43d9-8098-7f08e6a8788f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: N_NATIONKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 479ced9f-93b3-4e4c-9362-be5857a539ac
+                stepCounter: 89f60712-a060-409f-96f5-c1da38c84737
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e68667a6-5778-4af3-8bb1-38beb4264b1f
+          stepCounter: 52d10f4f-0b20-43d9-8098-7f08e6a8788f
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: N_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ce445ec3-33af-4b7e-83ac-994c7e18eb20
+                stepCounter: 89f60712-a060-409f-96f5-c1da38c84737
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 590acf39-eb98-4180-8367-d40fadc74747
+          stepCounter: 52d10f4f-0b20-43d9-8098-7f08e6a8788f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: N_REGIONKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 89588653-7c52-48cb-abd1-5da0d1f7b57f
+                stepCounter: 89f60712-a060-409f-96f5-c1da38c84737
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 61a75281-1124-4569-a456-d32698f7a163
+          stepCounter: 52d10f4f-0b20-43d9-8098-7f08e6a8788f
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: R_REGIONKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: beb8a922-ff92-4141-bc2c-4e04caa2e6a0
+                stepCounter: 688f3ded-aa66-46c2-9eab-a421d0d871c0
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42c8c8f4-d69d-4e25-886a-77c91bbf82cb
+          stepCounter: 52d10f4f-0b20-43d9-8098-7f08e6a8788f
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: R_NAME
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1fac9c0-70db-405f-9da7-a71894578cb3
+                stepCounter: 688f3ded-aa66-46c2-9eab-a421d0d871c0
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: LANDING_STORAGE
+            nodeName: NATION
+          - locationName: LANDING_STORAGE
+            nodeName: REGION
+        join:
+          joinCondition: |-
+            FROM {{ ref('LANDING_STORAGE', 'NATION') }} "NATION"
+            INNER JOIN {{ ref('LANDING_STORAGE', 'REGION') }} "REGION"
+            ON "NATION".N_REGIONKEY = "REGION".R_REGIONKEY
+        name: RAW_NATION_REGION
+        noLinkRefs: []
+  name: RAW_NATION_REGION
+  overrideSQL: false
+  schema: ""
+  sqlType: "8"
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,17 @@
+fileVersion: 1
+id: "7"
+mappingDefinitions:
+  CUSTOMISED_STORAGE:
+    database: AC_DEV
+    schema: CUSTOMISED
+  LANDING_STORAGE:
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF1
+  RAW_STORAGE:
+    database: AC_DEV
+    schema: RAW
+  REFINED_STORAGE:
+    database: AC_DEV
+    schema: REFINED
+name: Dev_Environment
+type: Environment

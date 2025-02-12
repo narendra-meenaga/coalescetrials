@@ -1,0 +1,76 @@
+fileVersion: 1
+id: 198b6513-21e7-4a25-9bd0-2aaf378bdd75
+name: CTE_PART
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Part data as defined by TPC-H
+  isMultisource: false
+  locationName: RAW_STORAGE
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a591ca62-99f3-424c-bfd6-608bafebeeee
+          stepCounter: 198b6513-21e7-4a25-9bd0-2aaf378bdd75
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: P_CONTAINER
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 59aed2b4-19d3-4b2c-ac3d-f8dab08eaeb7
+                stepCounter: b4f517cb-49bb-4058-97da-c09fd8f4f9f5
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2af98be5-aa25-430c-8159-a8dcf0ee4d42
+          stepCounter: 198b6513-21e7-4a25-9bd0-2aaf378bdd75
+        config: {}
+        dataType: ""
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: TOTAL_COUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: COUNT(*)
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          RAW_PART: b4f517cb-49bb-4058-97da-c09fd8f4f9f5
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: RAW_STORAGE
+            nodeName: RAW_PART
+        join:
+          joinCondition: |-
+            FROM {{ ref('RAW_STORAGE', 'RAW_PART') }} "RAW_PART"
+            GROUP BY "RAW_PART"."P_CONTAINER"
+        name: CTE_PART
+        noLinkRefs: []
+  name: CTE_PART
+  overrideSQL: false
+  schema: ""
+  sqlType: "9"
+  type: sql
+  version: 1
+type: Node
