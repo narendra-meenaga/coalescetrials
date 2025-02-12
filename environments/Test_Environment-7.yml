@@ -2,16 +2,16 @@ fileVersion: 1
 id: "7"
 mappingDefinitions:
   CUSTOMISED_STORAGE:
-    database: AC_DEV
+    database: AC_TEST
     schema: CUSTOMISED
   LANDING_STORAGE:
     database: SNOWFLAKE_SAMPLE_DATA
     schema: TPCH_SF1
   RAW_STORAGE:
-    database: AC_DEV
+    database: AC_TEST
     schema: RAW
   REFINED_STORAGE:
-    database: AC_DEV
+    database: AC_TEST
     schema: REFINED
-name: Dev_Environment
+name: Test_Environment
 type: Environment
